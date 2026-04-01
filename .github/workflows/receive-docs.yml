@@ -1,0 +1,53 @@
+name: Receive SDK Docs
+
+on:
+  workflow_dispatch:
+    inputs:
+      sdk:
+        description: "Which SDK docs to update (js or rust)"
+        required: true
+        type: choice
+        options:
+          - js
+          - rust
+      artifact_name:
+        description: "Name of the uploaded artifact containing the docs"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: incoming-docs/
+          github-token: ${{ secrets.VAULT_PROGRAM_TOKEN }}
+          repository: voltrxyz/vault-program
+          run-id: ${{ github.event.inputs.run_id || github.run_id }}
+
+      - name: Replace docs
+        run: |
+          rm -rf ${{ inputs.sdk }}/*
+          cp -r incoming-docs/* ${{ inputs.sdk }}/
+          rm -rf incoming-docs
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ${{ inputs.sdk }}/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "docs(${{ inputs.sdk }}): update generated SDK documentation"
+            git push
+          fi
