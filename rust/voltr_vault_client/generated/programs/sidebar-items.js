@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["VOLTR_VAULT_ID"]};

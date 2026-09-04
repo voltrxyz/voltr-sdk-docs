@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["accumulated_admin_fees","accumulated_manager_fees","accumulated_protocol_fees","calculate_unrealised_lp_fees","total_lp_supply_incl_fees","total_management_fee_bps","total_unharvested_lp_fees"]};

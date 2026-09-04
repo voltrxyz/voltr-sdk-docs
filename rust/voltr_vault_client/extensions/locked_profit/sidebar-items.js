@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["calculate_locked_profit","calculate_locked_profit_for_vault"]};

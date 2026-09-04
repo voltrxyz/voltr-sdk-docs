@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["high_water_mark_for_vault"],"struct":["HighWaterMarkInfo"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["process_all_withdrawal_receipts","process_withdrawal_receipt"],"struct":["PendingWithdrawalInfo"]};

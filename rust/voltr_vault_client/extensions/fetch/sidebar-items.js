@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["fetch_all_adaptor_add_receipts_of_vault","fetch_all_request_withdraw_vault_receipts_of_vault","fetch_all_strategy_init_receipts","fetch_all_strategy_init_receipts_of_vault"]};

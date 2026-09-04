@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["accounts","errors","instructions","programs","shared","types"]};
